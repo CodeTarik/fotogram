@@ -1,7 +1,5 @@
-let photos = [];
 
-window.onload = async function() {
-    await includeHTML();
+let photos = [];
     photos.push(
         './img/san-francisco.jpg', 
         './img/colosseum.jpg', 
@@ -9,7 +7,7 @@ window.onload = async function() {
         './img/tower-103417_1280.jpg'
     );
     render();
-};
+
 
 function render() {
     const gallery = document.getElementById('gallery');
@@ -44,4 +42,5 @@ async function includeHTML() {
         }
     }
 }
+includeHTML();
 
