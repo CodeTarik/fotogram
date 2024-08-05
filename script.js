@@ -1,3 +1,4 @@
+let photosAdded = false;
 
 let photos = [];
     photos.push(
@@ -19,15 +20,24 @@ function render() {
         img.alt = 'Photo';
         gallery.appendChild(img);
     });
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 }
 
-document.querySelector('.more_btn').addEventListener('click', () => {
+document.querySelector('.more_btn').addEventListener('click', () =>  {
+    if (!photosAdded){
     photos.push(
         './img/city-4807268_1280.jpg', 
-        './img/usa-2661636_1280.jpg'
+        './img/usa-2661636_1280.jpg',
+        './img/ny.jpg',
+        './img/bangkok.jpg',
+        './img/shang.jpg'
     );
+
     render();
+    photosAdded = true;
+    }
 });
+
 
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
@@ -42,5 +52,6 @@ async function includeHTML() {
         }
     }
 }
+
 includeHTML();
 

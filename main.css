@@ -15,7 +15,10 @@ img:hover{
     margin: 20px 20px;
     display: flex;
     justify-content: center;
+    overflow: hidden;
+    object-fit: cover;
 }
+
 
 #gallery{
     display: flex;
