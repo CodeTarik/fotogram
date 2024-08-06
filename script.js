@@ -1,4 +1,4 @@
-let photosAdded = false;
+let photosAdded = false;        //servers as a flag
 
 let photos = [];
     photos.push(
@@ -30,13 +30,16 @@ document.querySelector('.more_btn').addEventListener('click', () =>  {
         './img/usa-2661636_1280.jpg',
         './img/ny.jpg',
         './img/bangkok.jpg',
-        './img/shang.jpg'
+        './img/shang.jpg',
+        './img/osaka.jpg',
+        './img/bridge.jpg'
     );
 
     render();
     photosAdded = true;
     }
 });
+
 
 
 async function includeHTML() {
