@@ -36,9 +36,7 @@ document.querySelector('.more_btn').addEventListener('click', () =>  {
         './img/shang.jpg',
         './img/osaka.jpg',
         './img/bridge.jpg'
-
     );
-
     render();
     photosAdded = true;
     }
