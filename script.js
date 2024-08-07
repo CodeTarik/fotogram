@@ -48,20 +48,19 @@ function showModal(photo){
     const modalImg = document.getElementById('img01');
     modal.style.display = "block";
     modalImg.src = photo;
-
     const span = document.getElementsByClassName('close')[0];
     span.onclick = function() { 
     modal.style.display = "none";
     }
-}
+
 
 const modal = document.getElementById('gallery');
-        modal.onclick = function(event) {
-        if (event.target !== document.getElementById('img01')) {
-            modal.style.display = "none";
-            }
-        }
-
+    modal.onclick = function(event) {
+    if (event.target !== document.getElementById('img01')) {
+    modal.style.display = "none";
+    }
+    }
+    }
 
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
