@@ -1,4 +1,4 @@
-let photosAdded = false;
+let photosAdded = false;        //servers as a flag
 
 let photos = [];
     photos.push(
@@ -13,13 +13,16 @@ let photos = [];
 function render() {
     const gallery = document.getElementById('gallery');
     gallery.innerHTML = '';
-
     photos.forEach(photo => {
         let img = document.createElement('img');
         img.src = photo;
         img.alt = 'Photo';
+        img.onclick = function(){
+            showModal(photo);
+        }
         gallery.appendChild(img);
-    });
+        }
+    );
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 }
 
@@ -30,13 +33,36 @@ document.querySelector('.more_btn').addEventListener('click', () =>  {
         './img/usa-2661636_1280.jpg',
         './img/ny.jpg',
         './img/bangkok.jpg',
-        './img/shang.jpg'
+        './img/shang.jpg',
+        './img/osaka.jpg',
+        './img/bridge.jpg'
+
     );
 
     render();
     photosAdded = true;
     }
 });
+
+
+function showModal(photo){
+    let modal = document.getElementById('gallery');
+    const modalImg = document.getElementById('img01');
+    modal.style.display = "block";
+    modalImg.src = photo;
+
+    const span = document.getElementsByClassName('close')[0];
+    span.onclick = function() { 
+    modal.style.display = "none";
+    }
+}
+
+const modal = document.getElementById('gallery');
+        modal.onclick = function(event) {
+        if (event.target !== document.getElementById('img01')) {
+            modal.style.display = "none";
+            }
+        }
 
 
 async function includeHTML() {
@@ -52,6 +78,5 @@ async function includeHTML() {
         }
     }
 }
-
 includeHTML();
 

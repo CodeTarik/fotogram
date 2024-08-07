@@ -21,7 +21,11 @@ body{
     height: 5vh;
     width: 38vw;
     margin: 20px 20px;
+<<<<<<< HEAD
     filter: drop-shadow(2px 4px 6px black)
+=======
+    filter: drop-shadow(1px 2px 6px black);
+>>>>>>> 19750a33154f636e4293c4f7e1870741b164e71f
 }
 .headline{
     display: flex;
@@ -33,7 +37,11 @@ body{
     color: #c3ced6;
     font-size: 38px;
     font-family: 'Acme', sans-serif;
+<<<<<<< HEAD
     filter: drop-shadow(2px 4px 6px black)
+=======
+    filter: drop-shadow(1px 2px 6px black);
+>>>>>>> 19750a33154f636e4293c4f7e1870741b164e71f
 }
 
 footer{
