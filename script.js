@@ -37,7 +37,6 @@ document.querySelector('.more_btn').addEventListener('click', () =>  {
         './img/osaka.jpg',
         './img/bridge.jpg'
     );
-
     render();
     photosAdded = true;
     }
@@ -45,6 +44,7 @@ document.querySelector('.more_btn').addEventListener('click', () =>  {
 
 
 function showModal(photo){
+<<<<<<< HEAD
     let modal = document.getElementById('myModal');
     const modalImg = document.getElementById('img01');
     modal.style.display = "block";
@@ -68,6 +68,26 @@ modal.onclick = function(event) {
 
 
         
+=======
+    let modal = document.getElementById('gallery');
+    const modalImg = document.getElementById('img01');
+    modal.style.display = "block";
+    modalImg.src = photo;
+    const span = document.getElementsByClassName('close')[0];
+    span.onclick = function() { 
+    modal.style.display = "none";
+    }
+
+
+const modal = document.getElementById('gallery');
+    modal.onclick = function(event) {
+    if (event.target !== document.getElementById('img01')) {
+    modal.style.display = "none";
+    }
+    }
+    }
+
+>>>>>>> 4151be36028e4d82f56c59730dea415ac93952a4
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
     for (let i = 0; i < includeElements.length; i++) {

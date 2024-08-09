@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -12,13 +13,20 @@
 }
 
 .modal-content {
+=======
+#myModal img {
+>>>>>>> 4151be36028e4d82f56c59730dea415ac93952a4
     margin: auto;
     display: block;
     width: 80%;
     max-width: 700px;
 }
 
+<<<<<<< HEAD
 .close {
+=======
+#myModal .close {
+>>>>>>> 4151be36028e4d82f56c59730dea415ac93952a4
     position: absolute;
     top: 15px;
     right: 35px;
@@ -28,8 +36,13 @@
     transition: 0.3s;
 }
 
+<<<<<<< HEAD
 .close:hover,
 .close:focus {
+=======
+#myModal .close:hover,
+#myModal .close:focus {
+>>>>>>> 4151be36028e4d82f56c59730dea415ac93952a4
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
