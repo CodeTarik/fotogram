@@ -1,4 +1,4 @@
-
+/* Allgemeine Modal-Stile */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -10,15 +10,20 @@
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
+    display: flex; /* Use flexbox to center modal content */
 }
 
-#myModal img {
+/* Stile für das Bild innerhalb des Modals */
+.modal img {
     margin: auto;
     display: block;
     width: 80%;
     max-width: 700px;
 }
 
+/* Stile für den Schließen-Button */
 .close {
     position: absolute;
     top: 15px;
@@ -36,18 +41,3 @@
     cursor: pointer;
 }
 
-
-/*Arrow*/
-.modal_arrow{
-    transform: rotate(180deg);
-    width: 50px;
-    height: 50px;
-}
-
-.together{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    height: 100vh;
-}

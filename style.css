@@ -47,6 +47,13 @@ footer{
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2)
 }
 
+.signature{
+    font-family: 'Acme', sans-serif;
+    font-size: 12px;
+    color: #c3ced6;
+    display: flex;
+}
+
 /*Responsive*/
 
 @media (min-width:320px){

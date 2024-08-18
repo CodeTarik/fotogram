@@ -1,12 +1,11 @@
-let photosAdded = false;        //servers as a flag
+let photosAdded = false;  // Flag für das Hinzufügen von Fotos
 
-let photos = [];
-photos.push(
+let photos = [
     './img/san-francisco.jpg', 
     './img/colosseum.jpg', 
     './img/bridge-7930004_1280.jpg', 
     './img/tower-103417_1280.jpg'
-);
+];
 render();
 
 function render() {
@@ -15,17 +14,15 @@ function render() {
     photos.forEach(photo => {
         let img = document.createElement('img');
         img.src = photo;
-        img.alt = 'Photo';
-        img.onclick = function(){
-            showModal(photo);
-        }
+        img.alt = 'Foto'; // Überlege, beschreibenderen Alt-Text zu verwenden
+        img.onclick = () => showModal(photo);
         gallery.appendChild(img);
     });
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 }
 
-document.querySelector('.more_btn').addEventListener('click', () =>  {
-    if (!photosAdded){
+document.querySelector('.more_btn').addEventListener('click', () => {
+    if (!photosAdded) {
         photos.push(
             './img/city-4807268_1280.jpg', 
             './img/usa-2661636_1280.jpg',
@@ -40,8 +37,13 @@ document.querySelector('.more_btn').addEventListener('click', () =>  {
     }
 });
 
-function showModal(photo){
+function showModal(photo) {
+    // Überprüfen, ob das Modal bereits existiert
     let modal = document.getElementById('myModal');
+    if (!modal) {
+        modal = createModal();
+    }
+
     const modalImg = document.getElementById('img01');
     modal.style.display = "flex";
     modalImg.src = photo;
@@ -52,26 +54,53 @@ function showModal(photo){
     }
 }
 
-const modal = document.getElementById('myModal');
-modal.onclick = function(event) {
-    if (event.target !== document.getElementById('img01')) {
-        modal.style.display = "none";
-    }
+function createModal() {
+    // Modal HTML erstellen
+    const modalHTML = `
+        <div id="myModal" class="modal" style="display: none;">
+            <span class="close">&times;</span>
+            <img id="img01" class="modal-content" />
+            <div id="caption"></div>
+        </div>
+    `;
+
+    // Modal zu body hinzufügen
+    const modalDiv = document.createElement('div');
+    modalDiv.innerHTML = modalHTML;
+    document.body.appendChild(modalDiv);
+
+    // Modal Klick-Event für Schließen hinzufügen
+    const modal = document.getElementById('myModal');
+    modal.onclick = function(event) {
+        if (event.target !== document.getElementById('img01')) {
+            modal.style.display = "none";
+        }
+    };
+
+    return modal;
 }
 
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
-    for (let i = 0; i < includeElements.length; i++) {
-        const element = includeElements[i];
+    for (let element of includeElements) {
         const file = element.getAttribute("w3-include-html");
-        let resp = await fetch(file);
-        if (resp.ok) {
-            element.innerHTML = await resp.text();
-        } else {
-            element.innerHTML = 'Page not found';
+        try {
+            let resp = await fetch(file);
+            if (resp.ok) {
+                element.innerHTML = await resp.text();
+            } else {
+                element.innerHTML = 'Seite nicht gefunden';
+            }
+        } catch (error) {
+            console.error('Fehler beim Einfügen von HTML:', error);
+            element.innerHTML = 'Inhalt konnte nicht geladen werden';
         }
     }
 }
 includeHTML();
+
+
+
+
 
 
