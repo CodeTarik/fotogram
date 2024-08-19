@@ -52,6 +52,12 @@ function showModal(photo) {
     span.onclick = function() { 
         modal.style.display = "none";
     }
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+
+    prev.onclick = showPrevPhoto;
+    next.onclick = showNextPhoto;
+
 }
 
 function createModal() {
@@ -59,7 +65,9 @@ function createModal() {
     const modalHTML = `
         <div id="myModal" class="modal" style="display: none;">
             <span class="close">&times;</span>
+            <span class="arrow" id="prev">&#10094;</span>
             <img id="img01" class="modal-content" />
+            <span class="arrow" id="next">&#10095;</span>
             <div id="caption"></div>
         </div>
     `;
@@ -80,6 +88,23 @@ function createModal() {
     return modal;
 }
 
+function showPrevPhoto() {
+    currentPhotoIndex = (currentPhotoIndex > 0) ? currentPhotoIndex - 1 : photos.length - 1;
+    updateModalImage();
+}
+
+function showNextPhoto() {
+    currentPhotoIndex = (currentPhotoIndex < photos.length - 1) ? currentPhotoIndex + 1 : 0;
+    updateModalImage();
+}
+
+function updateModalImage() {
+    const modalImg = document.getElementById('img01');
+    modalImg.src = photos[currentPhotoIndex];
+}
+
+
+
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
     for (let element of includeElements) {
@@ -98,9 +123,3 @@ async function includeHTML() {
     }
 }
 includeHTML();
-
-
-
-
-
-
