@@ -1,21 +1,22 @@
 let photosAdded = false;  // Flag für das Hinzufügen von Fotos
-
 let photos = [
     './img/san-francisco.jpg', 
     './img/colosseum.jpg', 
     './img/bridge-7930004_1280.jpg', 
     './img/tower-103417_1280.jpg'
 ];
+let currentPhotoIndex = 0; // Globale Variable für den aktuellen Foto-Index
+
 render();
 
 function render() {
     const gallery = document.getElementById('gallery');
     gallery.innerHTML = '';
-    photos.forEach(photo => {
+    photos.forEach((photo, index) => {
         let img = document.createElement('img');
         img.src = photo;
         img.alt = 'Foto'; // Überlege, beschreibenderen Alt-Text zu verwenden
-        img.onclick = () => showModal(photo);
+        img.onclick = () => showModal(index);
         gallery.appendChild(img);
     });
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
@@ -37,31 +38,30 @@ document.querySelector('.more_btn').addEventListener('click', () => {
     }
 });
 
-function showModal(photo) {
-    // Überprüfen, ob das Modal bereits existiert
+function showModal(index) {
+    currentPhotoIndex = index;
     let modal = document.getElementById('myModal');
     if (!modal) {
         modal = createModal();
     }
 
-    const modalImg = document.getElementById('img01');
+    updateModalImage();
+
     modal.style.display = "flex";
-    modalImg.src = photo;
 
     const span = document.getElementsByClassName('close')[0];
     span.onclick = function() { 
         modal.style.display = "none";
     }
+
     const prev = document.getElementById('prev');
     const next = document.getElementById('next');
 
     prev.onclick = showPrevPhoto;
     next.onclick = showNextPhoto;
-
 }
 
 function createModal() {
-    // Modal HTML erstellen
     const modalHTML = `
         <div id="myModal" class="modal" style="display: none;">
             <span class="close">&times;</span>
@@ -72,15 +72,13 @@ function createModal() {
         </div>
     `;
 
-    // Modal zu body hinzufügen
     const modalDiv = document.createElement('div');
     modalDiv.innerHTML = modalHTML;
     document.body.appendChild(modalDiv);
 
-    // Modal Klick-Event für Schließen hinzufügen
     const modal = document.getElementById('myModal');
     modal.onclick = function(event) {
-        if (event.target !== document.getElementById('img01')) {
+        if (event.target !== document.getElementById('img01') && event.target.className !== 'arrow') {
             modal.style.display = "none";
         }
     };
@@ -122,4 +120,4 @@ async function includeHTML() {
         }
     }
 }
-includeHTML();
+includeHTML()
